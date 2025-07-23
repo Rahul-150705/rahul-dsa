@@ -1,0 +1,19 @@
+//// declare empty freq then if the store the count of each letter if egg and add then e is 1 and a is 1 and then g is 1 and d is one then g is 2 so it freq2 \
+also should match so if matched the true else false
+
+ class Solution {
+    public boolean isIsomorphic(String s, String t) {
+        if(s.length()!=t.length()) return false;
+        int[] freq= new int[128];
+        int[] freq1= new int[128];
+        for(int i=0;i<s.length();i++)
+        {
+            char x=s.charAt(i);
+            char y=t.charAt(i);
+            if(freq[x]!=freq1[y]) return false;
+            freq[x]=i+1;
+            freq1[y]=i+1;
+    }
+    return true;
+}
+}
