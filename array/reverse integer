@@ -1,0 +1,16 @@
+class Solution {
+    public int reverse(int x) {
+        int v=0;
+        while(x!=0)
+        {
+        if(v>214748364 || v<-214748364)
+        {
+            return 0;
+        }
+        int l=x%10;
+        v=v*10+l;
+        x=x/10;
+        }
+        return v;
+        }
+    }
