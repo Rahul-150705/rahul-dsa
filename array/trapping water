@@ -1,0 +1,21 @@
+class Solution {
+    public int trap(int[] height) {
+        int n = height.length;
+        if (n == 0) return 0; 
+        int[] lfMax = new int[n];
+        int[] rtMax = new int[n];
+        lfMax[0] = height[0];
+        for (int i = 1; i < n; i++) {
+            lfMax[i] = Math.max(lfMax[i - 1], height[i]);
+        }
+        rtMax[n - 1] = height[n - 1];
+        for (int i = n - 2; i >= 0; i--) {
+            rtMax[i] = Math.max(rtMax[i + 1], height[i]);
+        }
+        int trapped = 0;
+        for (int i = 0; i < n; i++) {
+            trapped += Math.min(lfMax[i], rtMax[i]) - height[i];
+        }
+        return trapped;
+    }
+}
