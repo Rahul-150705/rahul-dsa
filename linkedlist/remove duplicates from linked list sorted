@@ -1,0 +1,26 @@
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode() {}
+ *     ListNode(int val) { this.val = val; }
+ *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+ * }
+ */
+class Solution {
+    public ListNode deleteDuplicates(ListNode head) {
+        ListNode t1=head; //  u cannot use for loop and use while loop my mistake is i did not take the val i just completely for got and compared the value
+        while(t1!=null && t1.next!=null)
+        {
+            if(t1.val==t1.next.val)
+            {
+                t1.next=t1.next.next;
+            }
+            else{
+                t1=t1.next;
+            }
+        }
+        return head;
+    }
+}
