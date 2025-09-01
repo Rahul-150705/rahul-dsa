@@ -1,0 +1,23 @@
+class Solution {
+        public void backtracking(int[] nums,int t,List<List<Integer>> res,List<Integer> combi,int currIndex)
+        {
+            if(t==0)
+            {
+                res.add(new ArrayList<>(combi));
+                return;
+            }
+            if(t<0) return ;
+            for(int i=currIndex;i<nums.length;i++)
+            {
+                combi.add(nums[i]);
+                backtracking(nums,t-nums[i],res,combi,i);
+                combi.remove(combi.size()-1);
+            }
+        }
+    public List<List<Integer>> combinationSum(int[] nums, int target) {
+        List<List<Integer>> res=new ArrayList<>();
+        List<Integer> combi = new ArrayList<>();
+        backtracking(nums,target,res,combi,0);
+        return res;  
+    }
+}
