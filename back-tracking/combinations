@@ -1,0 +1,23 @@
+class Solution {
+    public void backtracking (int n,List<List<Integer>> res,List<Integer> combi,int k,int curr){
+    if(combi.size()==k)
+    {
+        res.add(new ArrayList<>(combi));
+        return ;
+    }
+    for(int i=curr;i<=n;i++) // only mistake is i<n is written first
+    {
+        combi.add(i);
+        backtracking(n,res,combi,k,i+1);
+        combi.remove(combi.size()-1);
+    }
+    }
+    public List<List<Integer>> combine(int n, int k) {
+        List<List<Integer>> res= new ArrayList<>();
+        List<Integer> combi= new ArrayList<>();
+        backtracking(n,res,combi,k,1);
+        return res;
+
+        
+    }
+}
