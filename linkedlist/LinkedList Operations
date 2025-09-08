@@ -8,7 +8,7 @@ class Node {
 		this.next=null;
 	}
 }
-	class LinkedList{
+	class LinkedList{  // used to declare all the function like addfirst,addlast
 		Node head;
 		public void addLast(int val)
 		{
