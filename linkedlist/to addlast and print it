@@ -1,0 +1,49 @@
+package linkedlist;
+class Node {
+	int val;
+	Node next;
+	Node(int val)
+	{
+		this.val=val;
+		this.next=null;
+	}
+}
+	class LinkedList{
+		Node head;
+		public void addLast(int val)
+		{
+			Node nn = new Node(val);
+			if(head==null)
+			{
+				head=nn;
+				return ;
+			}
+			Node current=head; // declare the current as head to go till the last and then add at last 
+			while(current.next!=null)
+			{
+				current=current.next;
+			}
+			current.next=nn;
+		}
+		public void printlist()
+		{
+			Node current=head;
+			while(current!=null)
+			{
+				System.out.print(current.val+"-->");
+				current=current.next;
+			}
+			System.out.println("null");
+		}
+	}
+
+public class Main {
+	public static void main(String[] args)
+	{
+		LinkedList ll=new LinkedList();
+		ll.addLast(10);
+		ll.addLast(20);
+		ll.addLast(30);
+		ll.printlist();
+	}
+}
