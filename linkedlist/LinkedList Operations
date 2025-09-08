@@ -1,0 +1,123 @@
+package linkedlist;
+class Node {
+	int val;
+	Node next;
+	Node(int val)
+	{
+		this.val=val;
+		this.next=null;
+	}
+}
+	class LinkedList{
+		Node head;
+		public void addLast(int val)
+		{
+			Node nn = new Node(val);
+			if(head==null)
+			{
+				head=nn;
+				return ;
+			}
+			Node current=head; // declare the current as head to go till the last and then add at last 
+			while(current.next!=null)
+			{
+				current=current.next;
+			}
+			current.next=nn;
+		}
+		public void addfirst(int val)
+		{
+			Node nn=new Node(val);
+			nn.next=head;
+			head=nn;
+		}
+		public void printlist()
+		{
+			Node current=head;
+			while(current!=null)
+			{
+				System.out.print(current.val+"-->");
+				current=current.next;
+			}
+			System.out.println("null");
+		}
+		int count=0;
+		public void addMiddle(int x,int y)
+		{
+			Node nn=new Node(y);
+			Node current=head;
+			while(current!=null && count<x-1)
+			{
+				current=current.next;
+				count++;
+			}
+			nn.next=current.next;
+			current.next=nn;
+		}
+		public void deletefirst()
+		{
+			if(head==null)
+			{
+				System.out.println("empty");
+			}
+			head=head.next;
+		}
+		public void deletelast()
+		{
+			if(head==null) // when first element is empty then return empty no value is added then we use this
+			{
+				System.out.println("empty");
+				return ;
+			}
+			if(head.next==null) // if 1-->null then we need to return only null so we use this 
+			{
+				head=null;
+				return ;
+			}
+			Node current=head;
+			while(current.next.next!=null) // main logic 
+			{
+				current=current.next;
+			}
+			current.next=null;
+		}
+		public void deleteAtPosition(int pos)
+		{
+			Node current=head;
+			if(head==null)
+			{
+				System.out.println("empty");
+			}
+			if(pos==0)
+			{
+				head=head.next;
+				return;
+			}
+			for(int i=0;i<pos-1;i++)
+			{
+				if(current.next==null)
+				{
+					System.out.println("out of bound");
+				}
+				current=current.next;
+			}
+			current.next=current.next.next;
+		}
+	}
+
+public class Main {
+	public static void main(String[] args)
+	{
+		LinkedList ll=new LinkedList();
+		ll.addLast(10);
+		ll.addLast(20);
+		ll.addLast(30);
+		ll.addfirst(0);
+		ll.addMiddle(2, 80);
+		ll.deletefirst();
+		ll.addLast(90);
+		ll.deletelast();
+		ll.deleteAtPosition(1);
+		ll.printlist();
+	}
+}
