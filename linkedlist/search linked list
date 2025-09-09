@@ -1,0 +1,22 @@
+public void searchValue(int y) {
+				int count1=0;
+				Node current=head;
+				boolean found=false;
+				while(current!=null)
+				{
+					if(current.val==y)
+					{
+						System.out.println(count1);
+						found=true;
+						break;
+						
+					}
+					count1++;
+					current=current.next;
+				}
+				if(!found)
+				{
+					System.out.println("not fount");
+				}
+				
+			}
