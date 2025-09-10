@@ -1,0 +1,26 @@
+
+class Solution {
+    public ListNode addTwoNumbers(ListNode t1, ListNode t2) {
+        ListNode dummy = new ListNode(0); 
+        ListNode current = dummy; // to store new added values
+        int carry=0;
+        while(t1!=null || t2!=null || carry!=0 )
+        {
+            int sum=carry; // to keep reminder
+            if(t1!=null)
+            {
+                sum+=t1.val;
+                t1=t1.next;
+            }
+            if(t2!=null)
+            {
+                sum+=t2.val;
+                t2=t2.next;
+            }
+            carry=sum/10;
+            current.next=new ListNode(sum%10);
+            current=current.next;
+        }
+        return dummy.next;
+}
+}
