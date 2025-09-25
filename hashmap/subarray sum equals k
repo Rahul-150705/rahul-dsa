@@ -1,0 +1,15 @@
+class Solution {
+    public int subarraySum(int[] nums, int k) {
+        int sum=0;
+        int count=0;
+        HashMap<Integer,Integer> freq=new HashMap<>();
+        freq.put(0,1);
+        for(int i:nums)
+        {
+            sum+=i;
+            count+=freq.getOrDefault(sum-k,0); // if present then count
+            freq.put(sum,freq.getOrDefault(sum,0)+1); 
+        }
+        return count;
+}
+}
